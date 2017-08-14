@@ -14,3 +14,9 @@ An information retrieval system for a comparative analysis of TF-IDF and BM25 ra
 * Install the repo requirements via
 		
 		pip install -r requirements.txt
+
+## Running the crawler
+* Run the following command:
+        
+        python src/crawler/script.py
+        
