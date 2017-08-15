@@ -3,15 +3,16 @@ import os
 from datetime import datetime
 from os.path import dirname, realpath
 from whoosh import index
-from schema import RedditSchema 
+from search.schema import RedditSchema
 
 PROJECT_DIR = dirname(dirname(dirname(realpath(__file__))))
 INDEX_DIR = os.path.join(PROJECT_DIR, "indexdir")
 
+
 def create_index():
     if not os.path.exists(INDEX_DIR):
         os.mkdir(INDEX_DIR)
-    ix = index.create_in(INDEX_DIR, RedditSchema, indexname="reddit")
+    index.create_in(INDEX_DIR, RedditSchema, indexname="reddit")
 
 
 def index_documents():
@@ -22,9 +23,12 @@ def index_documents():
         documents = json.load(f)
     for subreddit in documents:
         for doc in documents[subreddit]:
-            writer.add_document(title=doc['title'], body=doc["body"],
-                                created=datetime.fromtimestamp(int(doc["created_date"])), url=doc["url"],
-                                subreddit=subreddit)    
+            timestamp = datetime.fromtimestamp(int(doc["created_date"]))
+            writer.add_document(title=doc['title'],
+                                body=doc["body"],
+                                created=timestamp,
+                                url=doc["url"],
+                                subreddit=subreddit)
     writer.commit()
 
 

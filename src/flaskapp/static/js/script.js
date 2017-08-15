@@ -1,7 +1,7 @@
 //Calling search function on keyup for instant results
-$('#search').keyup(function () {
-    post();
-});
+// $('#search').keyup(function () {
+//     post();
+// });
 
 //Search post Function
 function post()

@@ -20,23 +20,45 @@
         </div>
     </div>
 
+    {% if tfidf is defined %}
     <div class="row">
         <div class="col-sm-6">
             <div id="tfidf">
                 <h3 class="text-center">TF-IDF results</h3>
+                {% for x in tfidf %}
+                <div class="result">
+                <div class="result-content">
+                    <h4><strong>{{ x["title"] }}</strong></h4>
+                    <h5><strong>Subreddit :</strong> {{ x["subreddit"] }}</h5>
+                    <h5><a target='_blank' href='{{ x["url"] }}'>{{ x["url"] }}</a></h5>
+                    <div class="result-body">{{ x["body"] }}</div>
+                </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="col-sm-6">
             <div id="tfidf">
                 <h3 class="text-center">BM25 results</h3>
+                {% for x in bm25 %}
+                <div class="result">
+                <div class="result-content">
+                    <h4><strong>{{ x["title"] }}</strong></h4>
+                    <h5><strong>Subreddit :</strong> {{ x["subreddit"] }}</h5>
+                    <h5><a target='_blank' href='{{ x["url"] }}'>{{ x["url"] }}</a></h5>
+                    <div class="result-body">{{ x["body"] }}</div>
+                </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+    {% endif %}
 
     </div>
 
 
-    <script src="static/js/jquery-1.9.0.js"></script>
+    <script src="static/js/jquery.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
     <script src="static/js/script.js"></script>
 
