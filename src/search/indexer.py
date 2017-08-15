@@ -25,6 +25,7 @@ def index_documents():
             writer.add_document(title=doc['title'], body=doc["body"],
                                 created=datetime.fromtimestamp(int(doc["created_date"])), url=doc["url"],
                                 subreddit=subreddit)    
+    writer.commit()
 
 
 if __name__ == '__main__':
