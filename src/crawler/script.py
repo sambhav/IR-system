@@ -1,5 +1,5 @@
 import json
-import praw
+import praw, prawcore
 
 DEFAULT_SUBREDDIT = "technology"
 AVERAGE_SECONDS_IN_MONTH = (365.25 / 12) * 24 * 60 * 60
@@ -17,14 +17,18 @@ def fetch_top_posts(subreddit_list=None, limit=10):
         subreddit_data = []
         subreddit = reddit.subreddit(subreddit_name)
         submissions = subreddit.top(time_filter='all', limit=limit)
-        for submission in submissions:
-            data = {'title': submission.title,
-                    'body': submission.selftext,
-                    'created_date': submission.created,
-                    'url': submission.url
-                    }
-            subreddit_data.append(data)
-        complete_data[subreddit_name] = subreddit_data
+        try:
+            for submission in submissions:
+                data = {'title': submission.title,
+                        'body': submission.selftext,
+                        'created_date': submission.created,
+                        'url': submission.url
+                        }
+                subreddit_data.append(data)
+        except (prawcore.exceptions.NotFound, prawcore.exceptions.Redirect):
+            pass
+        else:
+            complete_data[subreddit_name] = subreddit_data
     return complete_data
 
 
