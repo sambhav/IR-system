@@ -30,7 +30,7 @@ def fetch_top_posts(subreddit_list=None, limit=10):
 
 if __name__ == "__main__":
     subreddit_list = input("Enter a comma separated list of subreddits:\n") or None
-    subreddit_list = subreddit_list.split(",") if subreddit_list else None
+    subreddit_list = [s.strip() for s in subreddit_list.split(",")] if subreddit_list else None
     try:
         limit = int(input("Enter number of posts to fetch:\n"))
     except (TypeError, ValueError):
