@@ -12,11 +12,21 @@ An information retrieval system for a comparative analysis of TF-IDF and BM25 ra
 		source venv/bin/activate
 		
 * Install the repo requirements via
-		
-		pip install -r requirements.txt
+        
+        python setup.py install
 
-## Running the crawler
-* Run the following command:
+* To scrape documents use
+
+        irs scrape        
         
-        python src/crawler/script.py
+* To create an index use
+     
+        irs create_index
+
+* To index dumped data use
+
+        irs index_documents $JSON_PATH
+
+* To show results use    
         
+        irs run            
