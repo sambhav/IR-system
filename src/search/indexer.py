@@ -3,7 +3,10 @@ import os
 from datetime import datetime
 from os.path import dirname, realpath
 from whoosh import index
-from search.schema import RedditSchema
+try:
+    from search.schema import RedditSchema
+except:
+    from schema import RedditSchema
 
 PROJECT_DIR = dirname(dirname(dirname(realpath(__file__))))
 INDEX_DIR = os.path.join(PROJECT_DIR, "indexdir")

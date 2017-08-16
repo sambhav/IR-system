@@ -3,7 +3,10 @@ from pprint import pprint
 from whoosh.scoring import BM25F, TF_IDF
 from whoosh.index import open_dir
 from whoosh.qparser import MultifieldParser
-from search.indexer import INDEX_DIR
+try:
+    from search.indexer import INDEX_DIR
+except:
+    from indexer import INDEX_DIR
 
 
 def doc_search(query, scoring_method="BM25"):

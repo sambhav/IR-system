@@ -4,8 +4,7 @@ body {
   background-color: #f6f6f6;
 }
 
-a:hover, a:visited, a:link, a:active
-{
+a:hover, a:visited, a:link, a:active {
   text-decoration: none;
 }
 
@@ -43,5 +42,12 @@ a:hover, a:visited, a:link, a:active
 
 .result-content {
   overflow: hidden;
-  height: 300px;
+}
+
+.result-title {
+  min-height: 75px;
+}
+
+.right {
+  float: right;
 }
