@@ -1,7 +1,10 @@
+from os.path import dirname, abspath, join as join_path
 from flask import Flask, request, render_template
-from search.search import doc_search
+from irs.search.search import doc_search
 
-app = Flask(__name__)
+TEMPLATE_FOLDER = join_path(dirname(abspath(__file__)), 'templates')
+
+app = Flask(__name__, template_folder=TEMPLATE_FOLDER)
 
 
 # Home page
