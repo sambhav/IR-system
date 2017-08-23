@@ -19,4 +19,4 @@ def homepage():
         tfidf = tfidf[:10]
     if len(bm25) > 10:
         bm25 = bm25[:10]
-    return render_template('search.html', tfidf=tfidf, bm25=bm25)
+    return render_template('search.html', tfidf=tfidf, bm25=bm25, query=query)
