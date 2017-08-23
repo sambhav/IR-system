@@ -7,12 +7,12 @@ from whoosh import index
 from irs.search.schema import RedditSchema
 
 PROJECT_DIR = dirname(dirname(dirname(realpath(__file__))))
-INDEX_DIR = os.path.join(PROJECT_DIR, "indexdir")
+INDEX_DIR = os.path.join(os.path.expanduser("~"), '.irs', "indexdir")
 
 
 def create_index():
     if not os.path.exists(INDEX_DIR):
-        os.mkdir(INDEX_DIR)
+        os.makedirs(INDEX_DIR)
     index.create_in(INDEX_DIR, RedditSchema, indexname="reddit")
 
 
